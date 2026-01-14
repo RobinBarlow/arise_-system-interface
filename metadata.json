@@ -1,0 +1,5 @@
+{
+  "name": "Arise: System Interface",
+  "description": "A gamified self-improvement dashboard inspired by the 'System' from Solo Leveling. Features XP tracking, daily quests, gym logging, and a gacha reward system.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />    <title>Arise - The System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* index.css */
+        body {
+            /* Respektiert die "Notch" und den Home-Balken beim iPhone */
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+
+            /* Verhindert Gummiband-Effekt beim Scrollen */
+            overscroll-behavior-y: none;
+            background-color: #0a1543; /* Deine sys-void Farbe */
+        }
+
+        /* Verhindert, dass man Texte wie auf einer Webseite markieren kann */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Erlaubt Markieren nur in Eingabefeldern */
+        input, textarea {
+            user-select: text;
+            -webkit-user-select: text;
+        }
+
+      body {
+        font-family: 'Rajdhani', sans-serif;
+        background-color: #0a1543;
+        color: #F2F2F2;
+      }
+      .font-orbitron {
+        font-family: 'Orbitron', sans-serif;
+      }
+      /* Custom Scrollbar for the System Look */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0a1543; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1b45d7; 
+        border-radius: 2px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #445EF2; 
+      }
+
+      /* --- AURA ANIMATIONS --- */
+      
+      /* Rare Pulse */
+      @keyframes neonPulse {
+        0%, 100% { box-shadow: 0 0 5px currentColor, 0 0 10px currentColor; }
+        50% { box-shadow: 0 0 15px currentColor, 0 0 25px currentColor; }
+      }
+      .animate-neon-pulse {
+        animation: neonPulse 2s infinite ease-in-out;
+      }
+
+      /* LEGENDARY: Thunder (Green) */
+      @keyframes thunderFlash {
+        0%, 85% { border-color: #333; box-shadow: none; background-color: #000; }
+        86% { border-color: #fff; box-shadow: 0 0 30px #00E676, inset 0 0 20px #fff; background-color: #052e16; }
+        88% { border-color: #00E676; box-shadow: 0 0 15px #00E676; }
+        90% { border-color: #333; box-shadow: none; }
+        92% { border-color: #4ade80; box-shadow: 0 0 40px #4ade80, inset 0 0 10px #4ade80; background-color: #222; }
+        95% { border-color: #fff; box-shadow: 0 0 20px #fff; }
+        100% { border-color: #333; background-color: #000; }
+      }
+      .animate-thunder {
+        animation: thunderFlash 2s infinite;
+      }
+
+      /* LEGENDARY: Inferno (Weakened) */
+      @keyframes infernoRise {
+        0% { box-shadow: 0 0 5px #E53935, inset 0 0 5px #E53935; border-color: #D50000; }
+        25% { box-shadow: 0 -5px 15px #FF9100, 0 0 10px #E53935, inset 0 0 10px #FF9100; border-color: #FF6D00; }
+        50% { box-shadow: 0 -10px 20px #FFD700, 0 0 8px #E53935, inset 0 0 15px #FF3D00; border-color: #FFD600; }
+        75% { box-shadow: 0 -5px 15px #FF9100, 0 0 10px #E53935, inset 0 0 10px #FF9100; border-color: #FF6D00; }
+        100% { box-shadow: 0 0 5px #E53935, inset 0 0 5px #E53935; border-color: #D50000; }
+      }
+      .animate-inferno {
+        animation: infernoRise 1.5s infinite linear;
+      }
+
+      /* LEGENDARY: Glitch (Enhanced) */
+      @keyframes glitchClip {
+        0% { clip-path: inset(10% 0 85% 0); transform: translate(-4px, 2px); }
+        20% { clip-path: inset(75% 0 5% 0); transform: translate(4px, -2px); }
+        40% { clip-path: inset(20% 0 50% 0); transform: translate(-3px, 3px); }
+        60% { clip-path: inset(60% 0 15% 0); transform: translate(3px, -3px); }
+        80% { clip-path: inset(5% 0 80% 0); transform: translate(-2px, 2px); }
+        100% { clip-path: inset(40% 0 40% 0); transform: translate(2px, -2px); }
+      }
+      @keyframes glitchBorder {
+        0%, 100% { border-color: #fff; box-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        33% { border-color: #00E676; box-shadow: 0 0 15px rgba(0,230,118,0.7); }
+        66% { border-color: #D500F9; box-shadow: 0 0 15px rgba(213,0,249,0.7); }
+      }
+      .animate-glitch {
+        position: relative;
+        animation: glitchBorder 0.4s infinite step-end;
+      }
+      .animate-glitch::before,
+      .animate-glitch::after {
+        content: '';
+        position: absolute;
+        top: -2px; left: -2px; right: -2px; bottom: -2px;
+        background: transparent;
+        border: 2px solid; 
+      }
+      .animate-glitch::before {
+        border-color: #00E676;
+        animation: glitchClip 2s infinite linear alternate-reverse;
+        opacity: 0.8;
+        z-index: -1;
+      }
+      .animate-glitch::after {
+        border-color: #D500F9;
+        animation: glitchClip 1.5s infinite linear alternate;
+        opacity: 0.8;
+        z-index: -2;
+      }
+
+      /* MYTHIC: Orbit (Blades) */
+      @keyframes orbit {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .animate-orbit {
+        animation: orbit 8s linear infinite;
+      }
+
+      /* MYTHIC: Hover (Wings) */
+      @keyframes hover-float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+      }
+      .animate-float {
+        animation: hover-float 2.5s ease-in-out infinite;
+      }
+
+      /* MYTHIC: Wings Flap */
+      @keyframes wingFlapLeft {
+        0%, 100% { transform: rotateY(0deg) skewY(0deg); }
+        50% { transform: rotateY(35deg) skewY(5deg); }
+      }
+      @keyframes wingFlapRight {
+        0%, 100% { transform: rotateY(0deg) skewY(0deg); }
+        50% { transform: rotateY(-35deg) skewY(-5deg); }
+      }
+      .wing-left { animation: wingFlapLeft 3s ease-in-out infinite; transform-origin: right center; }
+      .wing-right { animation: wingFlapRight 3s ease-in-out infinite; transform-origin: left center; }
+
+    </style>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                sys: {
+                  void: '#0a1543',
+                  black: '#181817',
+                  blue: '#1b45d7',
+                  neon: '#445EF2',
+                  text: '#F2F2F2',
+                  purple: '#A480F2',
+                  crimson: '#E53935',
+                  gold: '#FFD700',
+                  green: '#00E676',
+                }
+              },
+              boxShadow: {
+                'neon': '0 0 10px rgba(68, 94, 242, 0.5)',
+                'neon-strong': '0 0 20px rgba(68, 94, 242, 0.8)',
+                'gold': '0 0 15px rgba(255, 215, 0, 0.6)',
+              }
+            }
+          }
+        }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "recharts": "https://esm.sh/recharts@^3.6.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
