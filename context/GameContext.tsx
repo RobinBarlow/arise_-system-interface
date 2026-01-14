@@ -40,7 +40,7 @@ const defaultPlayer: Player = {
   xp: 0,
   xpToNextLevel: calculateXpRequired(1),
   gold: 0,
-  essenceStones: 30, 
+  essenceStones: 3, 
   stats: defaultStats,
   statPointsAvailable: 0,
   equippedItemId: null,
