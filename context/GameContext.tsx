@@ -53,7 +53,7 @@ const GameContext = createContext<GameContextType | undefined>(undefined);
 
 export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [player, setPlayer] = useState<Player>(() => {
-    const saved = localStorage.getItem('arise_player');
+    const saved = localStorage.getItem('arise_player_v2');
     return saved ? JSON.parse(saved) : defaultPlayer;
   });
 
@@ -91,7 +91,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   // Persistence
-  useEffect(() => { localStorage.setItem('arise_player', JSON.stringify(player)); }, [player]);
+  useEffect(() => { localStorage.setItem('arise_player_v2', JSON.stringify(player)); }, [player]);
   useEffect(() => { localStorage.setItem('arise_quests', JSON.stringify(quests)); }, [quests]);
   useEffect(() => { localStorage.setItem('arise_inventory', JSON.stringify(inventory)); }, [inventory]);
   useEffect(() => { localStorage.setItem('arise_exercises', JSON.stringify(exercises)); }, [exercises]);
